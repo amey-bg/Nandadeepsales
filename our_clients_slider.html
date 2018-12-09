@@ -1,0 +1,154 @@
+
+<!Doctype html>
+<html>
+<head>
+	<title>Our Clients Slider</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style>
+		#wrap{
+			background-color: #666;
+			margin: 2% auto;
+			width: 80%;
+			padding: 2% 0%;
+			overflow:;
+		}
+		#main_cont{
+			width: /*900px*/ 990px;	
+			height: 550px;	background-color: ;
+			overflow: hidden; margin: 0px auto;
+		}
+		.clients{
+			width: /*1800px*/ 1980px;
+			padding: 1% 0%;
+			background-color: #eeeeee;
+			overflow: hidden;
+		}
+		.clients .clogo{
+			width: 250px;
+			height: auto;
+			background-color:;
+			float: left;
+			margin: /*10px 25px*/ 10px 40px;
+			text-align: center;
+			//line-height: 150px;
+			overflow: hidden;
+		}
+		.clogo img{
+			width: 80%;
+			text-align: center;
+		}
+		.client_name {
+			display: block;
+			width: 80%;
+			margin: 0 auto;
+			padding: 1% 0%;
+			background-color: #232423;
+			color: #f3ba39;
+			font-size: 16px;
+			font-weight: bold;
+			font-family: kalinga;
+			text-align: center;
+		}
+	</style>
+	
+	<script type="text/javascript">
+
+$(function(){
+	//alert('working');
+	
+	var animationSpeed = 1000;
+	var pause = 3000;
+	var currentSlide = 1;
+	
+	var slider = $('#main_cont');
+	//var width = clients_logo_obj.width();
+	var sliderCont = slider.find('.clients');
+	console.log('UL length ='+sliderCont.length);
+	var slides = sliderCont.find('.clogo'); 
+	var width = slides.width() + 80;
+	console.log(slides.length);
+	console.log('Li width ='+width);
+	var interval;
+	var m=1, n = 0;
+	
+	function startSliding(){
+		interval = setInterval(function(){
+			
+			if(m == 0)
+			{
+				n=0;
+				console.log('m in if(m==0) = '+m);
+			}else
+			{
+				n -= width;
+				console.log('m in if(m==0) else = '+m);
+			}
+			sliderCont.animate({'margin-left' : n }, animationSpeed, function(){
+				//m = m - width;
+				console.log(currentSlide + ' n = '+n);
+				//if(currentSlide >= 1 )
+					//currentSlide++;
+				if(currentSlide == 3){
+					currentSlide = 0;
+					m=0;
+					//sliderCont.animate({'margin-left' : n}, animationSpeed);
+					//sliderCont.css({ 'margin-left' : 0});	
+				}else if(currentSlide < 3) {
+					m=1;
+					currentSlide++;
+					console.log('m in else = '+m +' currentslide = '+currentSlide);
+				}
+				
+			});
+		}, pause);
+	}// function startSliding() ends...
+	
+	startSliding();
+	
+});
+
+</script>
+	
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="main_cont">
+		
+		<ul class="clients">
+			<li class="clogo">
+				<img src="images/our_clients/ats_automation.jpg" />
+				<span class="client_name">ATS Automation</span>
+			</li>
+			<li class="clogo">
+				<img src="images/our_clients/mahindra_logistics.jpg" />
+				<span class="client_name">Mahindra Logistics</span>
+			</li>
+			<li class="clogo">
+				<img src="images/our_clients/racold.jpg" />
+				<span class="client_name">Racold</span>
+			</li>
+			<li class="clogo">
+				<img src="images/our_clients/parksons_packaging.jpg" />
+				<span class="client_name">Parksons Packaging</span>
+			</li>
+			<li class="clogo">
+				<img src="images/our_clients/suprajit.jpg" />
+				<span class="client_name">Suprajit Engg.</span>
+			</li>
+			<li class="clogo">
+				<img src="images/our_clients/ashok_minda_group.jpg" />
+				<span class="client_name">Spark Minda</span>
+			</li>
+			<!--<li class="clogo"><img src="images/clients/ATS_Automation.jpg" /></li>-->
+		</ul>
+	</div>
+</div>
+
+
+
+</body>
+
+
+</html>
